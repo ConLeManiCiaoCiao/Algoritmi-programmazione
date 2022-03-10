@@ -28,8 +28,8 @@ int main(void)
         {
             max = v[i];
         }
-        
-        if(v[i] < min)
+        /* Non considero 0 come minimo perché altrimenti diff_max = max banalmente */
+        if(v[i] < min || min == 0)
         {
             min = v[i];
         }
@@ -43,3 +43,4 @@ int main(void)
 }
 
 /* EOF*/
+
