@@ -33,6 +33,7 @@ int main(void)
         }
     } while(n < start || n > end);
 
+    ++end;
 
     while(start <= end)
     {
@@ -56,7 +57,7 @@ int main(void)
         }
     }
 
-    printf("Il numero scelto e' %d (just for debug, n = %d)\n", mid, n);
+    printf("Il numero scelto e' %d (just for debug, n = %d)\n", mid - 1, n);
 
     return EXIT_SUCCESS;
 }
