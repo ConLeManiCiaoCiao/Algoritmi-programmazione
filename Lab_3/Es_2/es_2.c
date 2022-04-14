@@ -4,7 +4,7 @@
 #define STR_SIZE 200
 #define SEQ_SIZE 5
 
-static char *insert_marker (char *, const char *, size_t);
+static char *insert_string (char *, const char *, size_t);
 
 int main(void)
 {
@@ -40,8 +40,8 @@ int main(void)
 
     for(i = 0; i < id_size; ++i)
     {
-        insert_marker(dna, "*", indexes[i] + i);
-        insert_marker(dna, "*", indexes[i] + SEQ_SIZE + i);
+        insert_string(dna, "*", indexes[i] + i);
+        insert_string(dna, "*", indexes[i] + SEQ_SIZE + i);
     }
 
     printf("Il numero di occorenze della sequenza %s e' %d\n", 
@@ -52,8 +52,8 @@ int main(void)
 }
 
 
-char * insert_marker
-(char * s1, const char *s2, size_t pos)
+char * insert_string
+(char * s1, const char *marker, size_t pos)
 {
     size_t len_s1 = strlen(s1);
 
@@ -67,10 +67,12 @@ char * insert_marker
         s1[len_s1 - i] = s1[len_s1 - i - 1];
     }
 
-    s1[pos] = s2[0];
+    s1[pos] = marker[0];
     s1[len_s1 + 1] = '\0';
 
     return s1;
 }
 
 /* EOF */
+
+
