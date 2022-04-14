@@ -53,7 +53,7 @@ int main(void)
 
 
 char * insert_string
-(char * s1, const char *marker, size_t pos)
+(char * s1, const char * marker, size_t pos)
 {
     size_t len_s1 = strlen(s1);
 
