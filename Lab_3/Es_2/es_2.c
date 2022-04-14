@@ -1,89 +1,76 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stddef.h>
-#define STR_SIZE 101
+#define STR_SIZE 200
 #define SEQ_SIZE 5
 
-void print_dna(const char *, const int *, int);
-void init_array(int *, int, int);
+static char *insert_string (char *, const char *, size_t);
 
 int main(void)
 {
     char dna[STR_SIZE] = "ACAGTAGATCCTCCCCGCGCATCCTATTTATTAAGTTAATTCTACAGCAATACGATCATATGCGGATCCGCAGTGGCCGGTAGACACACGTCTACCCCGC";
-    char pattern[SEQ_SIZE] = "ACAG";
-    int indexes[STR_SIZE];
+    char seq[SEQ_SIZE] = "ACAG";
+    size_t indexes[STR_SIZE];
 
-    int dna_len, pattern_len;
-    int i, j;
+    size_t dna_size, seq_size, id_size;
+    size_t i, j;
     int ct_occ;
-
-    init_array(indexes, STR_SIZE, -1);
 
     // puts("Inserisci la sequenza di DNA:");
     // gets(dna);
-    dna_len = strlen(dna);
+    dna_size = strlen(dna);
 
     // puts("Inserisci la sequenza da cercare:");
     // gets(pattern);
-    pattern_len = strlen(pattern);
+    seq_size = strlen(seq);
 
     ct_occ = 0;
-
-    for(i = 0; i < dna_len; ++i)
+    
+    for(i = 0, id_size = 0; i < dna_size; ++i)
     {
-        for(j = 0; j < pattern_len && dna[i + j] == pattern[j]; ++j);
+        for(j = 0; j < seq_size && dna[i + j] == seq[j]; ++j);
 
-        if(j == pattern_len)
+        if(j == seq_size)
         {
-            indexes[i] = i;
-            indexes[i + pattern_len] = i + pattern_len;
+            indexes[id_size] = i + id_size;
+            ++id_size;
             ++ct_occ;
         }
     }
 
-    printf("Il numero di occorenze della sottostringa %s e' %d\n", 
-            pattern, ct_occ);
-    
-    print_dna(dna, indexes, dna_len);
+    for(i = 0; i < id_size; ++i)
+    {
+        insert_string(dna, "*", indexes[i] + i);
+        insert_string(dna, "*", indexes[i] + SEQ_SIZE + i);
+    }
 
+    printf("Il numero di occorenze della sequenza %s e' %d\n", 
+            seq, ct_occ);
+    puts(dna);
+    
     return EXIT_SUCCESS;
 }
 
 
-void print_dna(const char * dna, const int * indexes, int len)
+char * insert_string
+(char * s1, const char *s2, size_t pos)
 {
-    int i;
+    size_t len_s1 = strlen(s1);
 
-    for(i = 0; i < len; ++i)
+    if (len_s1 < pos)
     {
-        if(i == indexes[i])
-        {
-            putchar('*');
-        }
-        
-        putchar(dna[i]);
+        pos = len_s1;
     }
 
-    // If needed print the last marker for the sequence
-    if(i == indexes[i])
+    for ( size_t i = 0; i < len_s1 - pos; i++ )
     {
-        putchar('*');
+        s1[len_s1 - i] = s1[len_s1 - i - 1];
     }
 
-    puts("");
+    s1[pos] = s2[0];
+    s1[len_s1 + 1] = '\0';
+
+    return s1;
 }
-
-
-void init_array(int * v, int dim, int value)
-{
-    int i;
-
-    for(i = 0; i < dim; ++i)
-    {
-        v[i] = value;
-    }
-}
-
 
 /* EOF */
