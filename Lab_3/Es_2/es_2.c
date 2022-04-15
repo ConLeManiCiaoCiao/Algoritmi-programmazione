@@ -9,7 +9,7 @@ static char * insert_marker(char *, const char *, size_t);
 int main(void)
 {
     char dna[STR_SIZE] = "ACAGTAGATCCTCCCCGCGCATCCTATTTATTAAGTTAATTCTACAGCAATACGATCATATGCGGATCCGCAGTGGCCGGTAGACACACGTCTACCCCGC";
-    char seq[SEQ_SIZE] = "ACAG";
+    char seq[SEQ_SIZE] = "CCCC";
     size_t indexes[STR_SIZE];
 
     size_t dna_size, seq_size, id_size;
@@ -25,8 +25,9 @@ int main(void)
     seq_size = strlen(seq);
 
     ct_occ = 0;
-    
-    for(i = 0, id_size = 0; i < dna_size; ++i)
+    id_size = 0;
+
+    for(i = 0; i < dna_size; ++i)
     {
         for(j = 0; j < seq_size && dna[i + j] == seq[j]; ++j);
 
@@ -53,26 +54,25 @@ int main(void)
 
 
 char * insert_marker
-(char * s1, const char * marker, size_t pos)
+(char * s1, const char * marker, size_t index)
 {
-    size_t len_s1 = strlen(s1);
+    size_t len = strlen(s1);
 
-    if (len_s1 < pos)
+    if (len < index)
     {
-        pos = len_s1;
+        index = len;
     }
 
-    for ( size_t i = 0; i < len_s1 - pos; i++ )
+    for (size_t i = 0; i < len - index; i++ )
     {
-        s1[len_s1 - i] = s1[len_s1 - i - 1];
+        s1[len - i] = s1[len - i - 1];
     }
 
-    s1[pos] = marker[0];
-    s1[len_s1 + 1] = '\0';
+    s1[index] = marker[0];
+    s1[len + 1] = '\0';
 
     return s1;
 }
 
 /* EOF */
-
 
