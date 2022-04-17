@@ -8,10 +8,10 @@ void init_matrix(int [N][N], int, int);
 
 int main(void)
 {
-    int matrix[N][N];
+    int matrix[N][N] = {{1}};   // To handle N = 1
     int i;
 
-    for(i = 0; i < (N - 2); ++i)
+    for(i = 0; i <= (N - 2); ++i)
     {
         init_matrix(matrix, N - i, i);
     }
