@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
 
 void input_array(int *, size_t);
 void print_array(const int *, size_t);
