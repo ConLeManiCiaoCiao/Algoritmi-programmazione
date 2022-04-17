@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <limits.h>
 
-void input_array(int * , size_t);
-void print_array(const int * , size_t);
-double calc_avg(const int * , size_t);
-int find_max(const int * , size_t);
-void print_pos(const int * , size_t, int);
+void input_array(int *, size_t);
+void print_array(const int *, size_t);
+double calc_avg(const int *, size_t);
+int find_max(const int *, size_t);
+void print_pos(const int *, size_t, int);
 
 
 int main(void)
@@ -42,7 +42,7 @@ int main(void)
 }
 
 
-void input_array(int *  v, size_t dim)
+void input_array(int * v, size_t dim)
 {
     size_t i;
 
@@ -54,7 +54,7 @@ void input_array(int *  v, size_t dim)
     }
 }
 
-void print_array(const int *  v, size_t dim)
+void print_array(const int * v, size_t dim)
 {
     size_t i;
 
@@ -68,7 +68,7 @@ void print_array(const int *  v, size_t dim)
     puts("");
 }
 
-double calc_avg(const int *  v, size_t dim)
+double calc_avg(const int * v, size_t dim)
 {
     size_t i;
     double avg = 0;
@@ -81,7 +81,7 @@ double calc_avg(const int *  v, size_t dim)
     return avg / dim;
 }
 
-int find_max(const int *  v, size_t dim)
+int find_max(const int * v, size_t dim)
 {
     size_t i;
 
