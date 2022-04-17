@@ -10,7 +10,7 @@ void print_pos(int *, size_t, int);
 
 int main(void)
 {
-    int *v = NULL;
+    int * v = NULL;
     size_t dim = 0;
     int max;
 
