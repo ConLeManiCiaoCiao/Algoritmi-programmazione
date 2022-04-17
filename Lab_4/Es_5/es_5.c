@@ -43,22 +43,25 @@ void init_matrix
     int i, j;
     int value = 1;
 
-    
+    // Print sup row
     for(i = st_pt, j = st_pt; j < dim; ++j)
     {
         matrix[i][j] = value++;
     }
 
+    // Print right column without first element
     for(i += 1, j -= 1; i < dim; ++i)
     {
         matrix[i][j] = value++;
     }
 
+    // Print inf row without last element
     for(i -= 1, j -= 1; j >= st_pt; --j)
     {
         matrix[i][j] = value++;
     }
 
+    // Print left column without first and last element
     for(i -= 1, j += 1; i > st_pt; --i)
     {
         matrix[i][j] = value++;
