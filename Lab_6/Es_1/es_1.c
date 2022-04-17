@@ -114,6 +114,5 @@ void print_pos(const int * v, size_t dim, int value)
     }
 }
 
-
 /* EOF */
 
