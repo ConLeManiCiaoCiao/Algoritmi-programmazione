@@ -6,7 +6,7 @@
 #define VALUE 0
 
 void read_matrix(int [ROWS][COLUMNS], int , int , FILE *);
-void print_matrix(int [ROWS][COLUMNS], int, int);
+void print_matrix(const int [ROWS][COLUMNS], int, int);
 
 
 int main(void)
@@ -86,7 +86,7 @@ void read_matrix
 }
 
 void print_matrix
-(int matrix[ROWS][COLUMNS], int r, int c)
+(const int matrix[ROWS][COLUMNS], int r, int c)
 {
     int i, j;
 

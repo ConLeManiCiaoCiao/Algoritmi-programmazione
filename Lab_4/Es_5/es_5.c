@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define N 5
+#define N 4
 
-void print_matrix(int [N][N], int, int);
+void print_matrix(const int [N][N], int, int);
 void init_matrix(int [N][N], int, int);
 
 
@@ -23,7 +23,7 @@ int main(void)
 
 
 void print_matrix
-(int matrix[N][N], int r, int c)
+(const int matrix[N][N], int r, int c)
 {
     int i, j;
 

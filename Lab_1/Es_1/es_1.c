@@ -15,7 +15,7 @@ int main(void)
     
     if(A != 0)
     {
-        x = (float)(B) / (float)(A);
+        x = (float) B / (float) A;
         printf("Risultato: %f\n", x);
     }
     else if(B == 0)
@@ -30,4 +30,4 @@ int main(void)
     return EXIT_SUCCESS; 
 }
 
-/* EOF*/
+/*** end of file ***/
