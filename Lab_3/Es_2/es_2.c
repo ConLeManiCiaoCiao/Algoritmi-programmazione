@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#define STR_SIZE 200
+#define STR_SIZE 202
 #define SEQ_SIZE 5
 
 static char * insert_marker(char *, const char *, size_t);
