@@ -28,7 +28,7 @@ int main(void)
         if(j == seq_size)
         {
             insert_marker(dna, "*", i + ct_occ);
-            insert_marker(dna, "*", i + SEQ_SIZE + ct_occ);
+            insert_marker(dna, "*", i + ct_occ + SEQ_SIZE);
             ++ct_occ;
         }
     }
