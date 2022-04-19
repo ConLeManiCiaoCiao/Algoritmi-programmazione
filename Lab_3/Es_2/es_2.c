@@ -1,51 +1,38 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 #define STR_SIZE 202
 #define SEQ_SIZE 5
 
-static char * insert_marker(char *, const char *, size_t);
+char * insert_marker(char *, const char *, size_t);
 
 int main(void)
 {
     char dna[STR_SIZE] = "ACAGTAGATCCTCCCCGCGCATCCTATTTATTAAGTTAATTCTACAGCAATACGATCATATGCGGATCCGCAGTGGCCGGTAGACACACGTCTACCCCGC";
-    char seq[SEQ_SIZE] = "CCCC";
-    size_t indexes[STR_SIZE];
+    char seq[SEQ_SIZE] = "CCGC";
 
-    size_t dna_size, seq_size, id_size;
+    size_t dna_size, seq_size;
     size_t i, j;
-    int ct_occ;
+    size_t ct_occ;
 
-    // puts("Inserisci la sequenza di DNA:");
-    // gets(dna);
     dna_size = strlen(dna);
-
-    // puts("Inserisci la sequenza da cercare:");
-    // gets(pattern);
     seq_size = strlen(seq);
 
     ct_occ = 0;
-    id_size = 0;
 
-    for(i = 0; i < dna_size; ++i)
+    for(i = 0; i < dna_size; i += 1 + ct_occ)
     {
-        for(j = 0; j < seq_size && dna[i + j] == seq[j]; ++j);
+        for(j = 0; j < seq_size && dna[i + j + ct_occ] == seq[j]; ++j);
 
         if(j == seq_size)
         {
-            indexes[id_size] = i + id_size;
-            ++id_size;
+            insert_marker(dna, "*", i + ct_occ);
+            insert_marker(dna, "*", i + SEQ_SIZE + ct_occ);
             ++ct_occ;
         }
     }
 
-    for(i = 0; i < id_size; ++i)
-    {
-        insert_marker(dna, "*", indexes[i] + i);
-        insert_marker(dna, "*", indexes[i] + SEQ_SIZE + i);
-    }
-
-    printf("Il numero di occorenze della sequenza %s e' %d\n", 
+    printf("Il numero di occorenze della sequenza %s e' %lu\n", 
             seq, ct_occ);
     puts(dna);
     
