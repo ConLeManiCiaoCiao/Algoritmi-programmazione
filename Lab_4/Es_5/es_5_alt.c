@@ -71,4 +71,3 @@ void init_matrix
 
 /* EOF */
 
-
