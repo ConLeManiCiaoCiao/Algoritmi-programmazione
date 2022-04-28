@@ -1,5 +1,3 @@
-// TODO: free the memory
-
 #include <stdio.h>
 #include <stdlib.h>
 #define MIN 0
@@ -19,6 +17,7 @@ int insert_tail(num_list_t **, int);
 void print_list(num_list_t *);
 bool_t is_prime(int);
 void new_primes_list(num_list_t *, num_list_t **);
+void free_list(num_list_t *);
 
 
 int main(void)
@@ -58,7 +57,9 @@ int main(void)
     
     puts("La lista contenente i numeri primi inseriti nella prima:");
     print_list(primes);
-    
+    free_list(nums);
+    free_list(primes);
+        
     return EXIT_SUCCESS;
 }
 
@@ -151,6 +152,18 @@ void new_primes_list(num_list_t * nums, num_list_t ** primes)
             insert_tail(primes, curr->num);
         }
         curr = curr->next;
+    }
+}
+
+void free_list(num_list_t * head)
+{
+    num_list_t * tmp;
+
+    while (head != NULL)
+    {
+        tmp = head;
+        head = head->next;
+        free(tmp);
     }
 }
 
