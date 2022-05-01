@@ -66,13 +66,12 @@ int main(void)
 int insert_tail(num_list_t ** t, int new_num)
 {
     num_list_t * p, * q;
-    int rval = SUCCESS;
     
     p = malloc(sizeof(num_list_t));
 
     if(p == NULL)
     {
-        rval = ERROR;
+        return ERROR;
     }
     else
     {
@@ -96,7 +95,7 @@ int insert_tail(num_list_t ** t, int new_num)
         }
     }
 
-    return rval;
+    return SUCCESS;
 }
 
 
@@ -113,31 +112,27 @@ void print_list(num_list_t * head)
 
 bool_t is_prime(int n)
 {
-    bool_t is_prime = TRUE;
     int i;
 
     if(n <= 3)
     {
-        is_prime = n > 1;
+        return n > 1;
     }
     
-    else if((n % 2) == 0 || (n % 3) == 0)
+    if((n % 2) == 0 || (n % 3) == 0)
     {
-        is_prime = FALSE;
+        return FALSE;
     }
 
-    if(is_prime)
+    for(i = 5; (i * i) <= n; i += 6)
     {
-        for(i = 5; (i * i) <= n; i += 6)
+        if((n % i) == 0 || (n % (i + 2)) == 0)
         {
-            if((n % i) == 0 || (n % (i + 2)) == 0)
-            {
-                is_prime = FALSE;
-            }
+            return FALSE;
         }
     }
 
-    return is_prime;
+    return TRUE;
 }
 
 
