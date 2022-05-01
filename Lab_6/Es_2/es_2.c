@@ -73,26 +73,24 @@ int insert_tail(num_list_t ** t, int new_num)
     {
         return ERROR;
     }
+
+    p->num = new_num;
+    p->next = NULL;
+
+    if(* t == NULL)
+    {
+        * t = p;
+    }
     else
     {
-        p->num = new_num;
-        p->next = NULL;
+        q = * t;
 
-        if(* t == NULL)
+        while(q->next != NULL)
         {
-            * t = p;
+            q = q->next;
         }
-        else
-        {
-            q = * t;
 
-            while(q->next != NULL)
-            {
-                q = q->next;
-            }
-
-            q->next = p;
-        }
+        q->next = p;
     }
 
     return SUCCESS;
